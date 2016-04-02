@@ -72,7 +72,7 @@ public class ControllerInput : MonoBehaviour {
             {
 				Vector3 newAngles = Vector3.zero;
 
-				newAngles.z = Mathf.LerpAngle(transform.eulerAngles.z,-angle, rotSpeed * Time.deltaTime);
+				newAngles.z = Mathf.LerpAngle(transform.eulerAngles.z,-angle + 90, rotSpeed * Time.deltaTime);
                 transform.eulerAngles = newAngles;//apply to euler
             }
         }
@@ -84,7 +84,7 @@ public class ControllerInput : MonoBehaviour {
             {
 				Vector3 newRightAngles = Vector3.zero;
 
-				newRightAngles.z = Mathf.LerpAngle(transform.eulerAngles.z,-rightAngle, rotSpeed * Time.deltaTime);
+				newRightAngles.z = Mathf.LerpAngle(transform.eulerAngles.z,-rightAngle + 90, rotSpeed * Time.deltaTime);
                 transform.eulerAngles = newRightAngles;
             }
         }

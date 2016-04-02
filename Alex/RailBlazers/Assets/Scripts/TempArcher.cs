@@ -3,9 +3,10 @@ using System.Collections;
 
 public class TempArcher : MonoBehaviour {
 
+    public int health;
 	public GameObject projectilePrefab;
 	public float shotDelay;
-   public float shotTimmer = 0.0f;
+    public float shotTimmer = 0.0f;
     public Transform shotSpawn;
     public bool lookAt;
     public bool isFiring;
@@ -61,5 +62,21 @@ public class TempArcher : MonoBehaviour {
     {
 
         var clone = Instantiate(projectilePrefab, shotSpawn.position, transform.rotation) as GameObject;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Got hit by projectile");
+            health--;
+            if(health < 1)
+            {
+                Debug.Log("I am dead");
+                this.enabled = false;
+                target.GetComponent<SplineWalker>().enabled = true;
+            }
+        }
+
     }
 }
