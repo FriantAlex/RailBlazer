@@ -17,21 +17,21 @@ public class CameraController : MonoBehaviour {
 	void Awake ()
 	{
 		// Setting up the reference.
-		player = GameObject.Find("Cart").transform;
+		player = GameObject.Find("cartTest3").transform;
 	}
 
 
 	bool CheckXMargin()
 	{
 		// Returns true if the distance between the camera and the player in the x axis is greater than the x margin.
-		return Mathf.Abs(trackingHelper.position.x - player.position.x) > xMargin;
+		return Mathf.Abs(transform.position.x - player.position.x) > xMargin;
 	}
 
 
 	bool CheckYMargin()
 	{
 		// Returns true if the distance between the camera and the player in the y axis is greater than the y margin.
-		return Mathf.Abs(trackingHelper.position.y - player.position.y) > yMargin;
+		return Mathf.Abs(transform.position.y - player.position.y) > yMargin;
 	}
 
 

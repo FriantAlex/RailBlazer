@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class ControllerInput : MonoBehaviour {
-	public float rotSpeed;
     /*
     Set up in editor
         Input manager must match appropriate names and values for Xbox controller
@@ -25,6 +24,9 @@ public class ControllerInput : MonoBehaviour {
         Rotation of stick moves parent object, shield rotates appropriately
         
     */
+    public float rotSpeed;
+    public float shieldDelay;
+    public bool bashing;
     void Update()
     {
         #region buttons
@@ -44,15 +46,17 @@ public class ControllerInput : MonoBehaviour {
         {
             Debug.Log("Button Y pressed");
         }
-
-        if (Input.GetButton("LeftBump"))
+        if (Input.GetButtonDown("LeftBump"))
         {
-            Debug.Log("Holding left bumper");
+            //Debug.Log("Hit left bumper");
+            if(this.gameObject.name == "LeftStickHome")
+                StartCoroutine(ShieldBash());
         }
-        if (Input.GetButton("RightBump"))
+        if (Input.GetButtonDown("RightBump"))
         {
-            Debug.Log("Holding right bumper");
+            //Debug.Log("Hit right bumper");
         }
+        
         #endregion
         #region Sticks
         /*
@@ -88,6 +92,35 @@ public class ControllerInput : MonoBehaviour {
                 transform.eulerAngles = newRightAngles;
             }
         }
-    #endregion        
+        #endregion
+
+        if (bashing)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+    /*Moves shield forward dependent on position to bash enemies.
+    Boolean bashing can be used to deal damage/kill enemies that come in contact with the shield
+    Shield delay is the amount of time the shield is shot out
+    Potentially add Lerp
+    */
+    private IEnumerator ShieldBash()
+    {
+        if (!bashing)
+        {
+            Debug.Log("shield bash!");
+            bashing = true;
+            Vector3 shieldPosLocal = transform.GetChild(0).transform.localPosition;
+            Vector3 resetShield = shieldPosLocal;
+            shieldPosLocal.y += .5f;
+            transform.GetChild(0).transform.localPosition = shieldPosLocal;
+            yield return new WaitForSeconds(shieldDelay);
+            transform.GetChild(0).transform.localPosition = resetShield;
+            bashing = false;
+        }
     }
 }

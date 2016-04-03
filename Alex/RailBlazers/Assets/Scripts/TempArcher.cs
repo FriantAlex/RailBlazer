@@ -9,6 +9,7 @@ public class TempArcher : MonoBehaviour {
     public float shotTimmer = 0.0f;
     public Transform shotSpawn;
     public bool lookAt;
+    public float attackRange;
     public bool isFiring;
 	public float dist;
 	public float sightRange;
@@ -17,7 +18,6 @@ public class TempArcher : MonoBehaviour {
 	private Quaternion startingRot;
 	// Use this for initialization
 	void Start () {
-	
 		startingRot = transform.rotation;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 	}
@@ -34,17 +34,17 @@ public class TempArcher : MonoBehaviour {
 			}
 			if(dist > sightRange){
 				transform.rotation = Quaternion.Slerp(transform.rotation,startingRot,  5 * Time.deltaTime);
-				lookAt = false;
-				
+				lookAt = false;				
 			}
+            if(dist < attackRange)
+            {
+                isFiring = true;
+            }
 			if (lookAt)
 			{
-				Vector3 diff = target.position - transform.position;
-				
-				float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-				
-				transform.rotation = Quaternion.Euler(0, 0, rotZ);
-				
+				Vector3 diff = target.position - transform.position;				
+				float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;				
+				transform.rotation = Quaternion.Euler(0, 0, rotZ);				
 			}
             if (isFiring)
             {
@@ -60,7 +60,6 @@ public class TempArcher : MonoBehaviour {
 
     void FireProjectile()
     {
-
         var clone = Instantiate(projectilePrefab, shotSpawn.position, transform.rotation) as GameObject;
     }
 
@@ -68,14 +67,10 @@ public class TempArcher : MonoBehaviour {
     {
         if(col.gameObject.tag == "Bullet")
         {
-            Debug.Log("Got hit by projectile");
-            health--;
-            if(health < 1)
-            {
-                Debug.Log("I am dead");
-                this.enabled = false;
-                target.GetComponent<SplineWalker>().enabled = true;
-            }
+            Debug.Log("Archer hit by projectile");
+            this.enabled = false;
+            target.GetComponent<SplineWalker>().enabled = true;
+            
         }
 
     }

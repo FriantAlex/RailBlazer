@@ -8,7 +8,6 @@ public class TutorialManage : MonoBehaviour {
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(player + "    " + player.name);
     }
 	// Use this for initialization
 	void Start () {
