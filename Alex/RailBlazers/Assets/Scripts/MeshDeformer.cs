@@ -29,7 +29,7 @@ public class MeshDeformer : MonoBehaviour {
 				Vector3 pos = spline.GetPoint (p * stepSize);
 				item.transform.localPosition = pos;
 				if (lookForward) {
-					item.transform.LookAt (pos + spline.GetDirection (p * stepSize),new Vector3(0,1,1));
+					item.transform.LookAt (pos + spline.GetDirection (p * stepSize),new Vector3(0,0,1));
 				}
 				item.transform.parent = transform;
 		}

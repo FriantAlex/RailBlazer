@@ -47,7 +47,7 @@ public class SplineWalker : MonoBehaviour {
 
 
 		if (lookForward) {
-			transform.LookAt(position + spline.GetDirection(progress).normalized,new Vector3 (0, 1,1));
+			transform.LookAt(position + spline.GetDirection(progress).normalized,new Vector3 (0, 0,1));
 		}
 	}
 }

@@ -72,7 +72,7 @@ public class BouncingLaser : MonoBehaviour
 			}
 
 			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == enemyTag)
-				Destroy(this.gameObject);
+				Destroy(hit.transform.gameObject);
 
 			if (timesReflected > limit)
 				loopActive = false;
