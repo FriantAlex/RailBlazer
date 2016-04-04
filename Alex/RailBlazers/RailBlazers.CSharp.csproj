@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\Ricochet.cs" />
     <Compile Include="Assets\Scripts\SpeedController.cs" />
+    <Compile Include="Assets\Scripts\Stopper.cs" />
     <Compile Include="Assets\Scripts\TempArcher.cs" />
     <Compile Include="Assets\Scripts\TestCode\Bezier.cs" />
     <Compile Include="Assets\Scripts\TestCode\BezierControlPointMode.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Assets\Scripts\TestCode\SplineWalker.cs" />
     <Compile Include="Assets\Scripts\TestCode\SplineWalkerMode.cs" />
     <Compile Include="Assets\Scripts\TestCode\TrackGen.cs" />
-    <Compile Include="Assets\TutorialManage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

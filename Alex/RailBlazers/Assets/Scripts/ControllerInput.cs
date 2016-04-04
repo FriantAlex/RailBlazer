@@ -25,16 +25,19 @@ public class ControllerInput : MonoBehaviour {
         
     */
     public float rotSpeed;
-    public float shieldDelay;
+    public float shieldGoDelay;
+    public float shieldReturnDelay;
     public float shieldGoSpeed;
     public float shieldReturnSpeed;
     public float shieldGoStretch;
     public float shieldReturnStretch;
     public float shieldDist;
+    public float shieldStretchLength; //New
     private float startTime;
     private float journeyLength = .01f;
     public float scaleLength = .01f;
     public bool bashing;
+    public bool returned;
 
     Vector3 shieldPosLocal;
     Vector3 shieldResetLocal;
@@ -47,6 +50,7 @@ public class ControllerInput : MonoBehaviour {
         shieldResetLocal = shieldPosLocal;
         shieldScaleLocal = transform.GetChild(0).transform.localScale;
         shieldScaleReset = shieldScaleLocal;
+        returned = true;
     }
 
     void Update()
@@ -125,7 +129,7 @@ public class ControllerInput : MonoBehaviour {
             float scaleJourney = scaleCovered / scaleLength;
 
             transform.GetChild(0).transform.localPosition = Vector3.Lerp(shieldResetLocal, shieldPosLocal, fracJourney);
-            transform.GetChild(0).transform.localScale = Vector3.Lerp(shieldScaleReset, shieldScaleLocal, scaleJourney);
+            transform.GetChild(0).transform.localScale = new Vector3(Mathf.Lerp(shieldScaleReset.x, shieldScaleLocal.x, scaleJourney), shieldScaleReset.y, shieldScaleReset.z);
         }
         else if(gameObject.name == "LeftStickHome")
         {
@@ -146,9 +150,10 @@ public class ControllerInput : MonoBehaviour {
     */
     private IEnumerator ShieldBash()
     {
-        if (!bashing)
+        if (!bashing && returned)
         {
             bashing = true;
+            returned = false;
 
             shieldPosLocal = transform.GetChild(0).transform.localPosition;
             shieldScaleLocal = transform.GetChild(0).transform.localScale;
@@ -157,16 +162,18 @@ public class ControllerInput : MonoBehaviour {
             shieldScaleReset= shieldScaleLocal;
 
             shieldPosLocal.y += shieldDist;
-            shieldScaleLocal.x += shieldGoStretch;
+            shieldScaleLocal.x += shieldStretchLength; //Swap from other value
 
             startTime = Time.time;
 
             journeyLength = Vector3.Distance(shieldPosLocal, shieldResetLocal);
             scaleLength = 2;
 
-            yield return new WaitForSeconds(shieldDelay);
+            yield return new WaitForSeconds(shieldGoDelay);
             startTime = Time.time;
             bashing = false;
+            yield return new WaitForSeconds(shieldReturnDelay);
+            returned = true;
         }
     }
 }
