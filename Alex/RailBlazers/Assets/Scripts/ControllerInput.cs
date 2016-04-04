@@ -26,7 +26,29 @@ public class ControllerInput : MonoBehaviour {
     */
     public float rotSpeed;
     public float shieldDelay;
+    public float shieldGoSpeed;
+    public float shieldReturnSpeed;
+    public float shieldGoStretch;
+    public float shieldReturnStretch;
+    public float shieldDist;
+    private float startTime;
+    private float journeyLength = .01f;
+    public float scaleLength = .01f;
     public bool bashing;
+
+    Vector3 shieldPosLocal;
+    Vector3 shieldResetLocal;
+    Vector3 shieldScaleLocal;
+    Vector3 shieldScaleReset;
+
+    void Awake()
+    {
+        shieldPosLocal = transform.GetChild(0).transform.localPosition;
+        shieldResetLocal = shieldPosLocal;
+        shieldScaleLocal = transform.GetChild(0).transform.localScale;
+        shieldScaleReset = shieldScaleLocal;
+    }
+
     void Update()
     {
         #region buttons
@@ -96,11 +118,25 @@ public class ControllerInput : MonoBehaviour {
 
         if (bashing)
         {
+            float distCovered = (Time.time - startTime) * shieldGoSpeed;
+            float scaleCovered = (Time.time - startTime) * shieldGoStretch;
 
+            float fracJourney = distCovered / journeyLength;
+            float scaleJourney = scaleCovered / scaleLength;
+
+            transform.GetChild(0).transform.localPosition = Vector3.Lerp(shieldResetLocal, shieldPosLocal, fracJourney);
+            transform.GetChild(0).transform.localScale = Vector3.Lerp(shieldScaleReset, shieldScaleLocal, scaleJourney);
         }
-        else
+        else if(gameObject.name == "LeftStickHome")
         {
+            float distCovered = (Time.time - startTime) * shieldReturnSpeed;
+            float scaleCovered = (Time.time - startTime) * shieldReturnStretch;
 
+            float fracJourney = distCovered / journeyLength;
+            float scaleJourney = scaleCovered / scaleLength;
+
+            transform.GetChild(0).transform.localPosition = Vector3.Lerp(shieldPosLocal, shieldResetLocal, fracJourney);
+            transform.GetChild(0).transform.localScale = Vector3.Lerp(shieldScaleLocal, shieldScaleReset, scaleJourney);
         }
     }
     /*Moves shield forward dependent on position to bash enemies.
@@ -112,14 +148,24 @@ public class ControllerInput : MonoBehaviour {
     {
         if (!bashing)
         {
-            Debug.Log("shield bash!");
             bashing = true;
-            Vector3 shieldPosLocal = transform.GetChild(0).transform.localPosition;
-            Vector3 resetShield = shieldPosLocal;
-            shieldPosLocal.y += .5f;
-            transform.GetChild(0).transform.localPosition = shieldPosLocal;
+
+            shieldPosLocal = transform.GetChild(0).transform.localPosition;
+            shieldScaleLocal = transform.GetChild(0).transform.localScale;
+
+            shieldResetLocal = shieldPosLocal;
+            shieldScaleReset= shieldScaleLocal;
+
+            shieldPosLocal.y += shieldDist;
+            shieldScaleLocal.x += shieldGoStretch;
+
+            startTime = Time.time;
+
+            journeyLength = Vector3.Distance(shieldPosLocal, shieldResetLocal);
+            scaleLength = 2;
+
             yield return new WaitForSeconds(shieldDelay);
-            transform.GetChild(0).transform.localPosition = resetShield;
+            startTime = Time.time;
             bashing = false;
         }
     }

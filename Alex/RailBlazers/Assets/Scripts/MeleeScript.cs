@@ -18,10 +18,13 @@ public class MeleeScript : MonoBehaviour
     public Transform target;
 
     private Quaternion startingRot;
+    private GameObject basher;
+
     void Start()
     {
         startingRot = transform.rotation;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        basher = GameObject.Find("LeftStickHome");
     }
 
     // Update is called once per frame
@@ -67,5 +70,19 @@ public class MeleeScript : MonoBehaviour
     {
         Debug.Log("Attack");
         //Play attack animation       
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        Debug.Log("I got hit");
+        if(col.gameObject.tag == "Shield")
+        {
+            Debug.Log("Shield hit me");
+            if (col.gameObject.transform.parent.GetComponent<ControllerInput>().bashing)
+            {
+                Debug.Log("I got bashed bruh");
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
