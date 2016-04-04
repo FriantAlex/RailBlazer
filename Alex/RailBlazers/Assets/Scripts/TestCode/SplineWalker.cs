@@ -5,9 +5,6 @@ public class SplineWalker : MonoBehaviour {
 	public BezierSpline spline;
 
 	public float duration;
-	public float maxSpeed;
-	public float speed;
-	public float acc;
 	public bool lookForward;
 
 	public SplineWalkerMode mode;
@@ -17,7 +14,6 @@ public class SplineWalker : MonoBehaviour {
 
 	private void Update () {
 
-		speed = Mathf.Lerp (speed, maxSpeed, acc * Time.deltaTime);
 
 		if (goingForward) {
 			progress += Time.deltaTime / duration;

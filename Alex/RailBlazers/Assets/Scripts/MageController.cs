@@ -6,8 +6,10 @@ public class MageController : MonoBehaviour
     public bool lookAt;
     public bool isFiring;
 	public float dist;
+	public float firingRange;
     public Transform target;
 	public float sightRange;
+	public ParticleSystem chargeUp;
 
 	private Quaternion startingRot;
     private LineRenderer line;
@@ -15,6 +17,8 @@ public class MageController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		chargeUp.Stop ();
+		chargeUp.Clear ();
 		startingRot = transform.rotation;
 		target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
 		line = this.gameObject.GetComponent<LineRenderer> ();
@@ -48,14 +52,22 @@ public class MageController : MonoBehaviour
 
             }
 
+			if (dist < firingRange)
+				isFiring = true;
+
             if (isFiring)
             {
-				line.enabled = true;
-				laser.enabled = true;
+				
+					line.enabled = true;
+					laser.enabled = true;
+					chargeUp.Stop ();
+					chargeUp.Clear ();
+
             }
 			if(!isFiring){
 				line.enabled = false;
 				laser.enabled = false;
+				chargeUp.Play ();
 			}
         }
     }
