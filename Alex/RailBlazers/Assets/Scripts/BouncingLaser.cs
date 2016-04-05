@@ -5,11 +5,12 @@ using System.Collections;
 public class BouncingLaser : MonoBehaviour
 {
 
-	public int dist; //max travel distance
+	public float dist; //max travel distance
 	public LineRenderer line; // the laser
 	public string reflectTag;  // what the laser can bounce off of
 	public string targetTag; // checks for hitting targets
 	public string enemyTag; // checks for hitting enemis
+	public string breakable;
 	public int limit; // how many times it can bounce
 	public bool isHit;
 
@@ -72,6 +73,9 @@ public class BouncingLaser : MonoBehaviour
 			}
 
 			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == enemyTag)
+				Destroy(hit.transform.gameObject);
+
+			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == breakable)
 				Destroy(hit.transform.gameObject);
 
 			if (timesReflected > limit)

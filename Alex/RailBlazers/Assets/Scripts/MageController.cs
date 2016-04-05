@@ -10,6 +10,7 @@ public class MageController : MonoBehaviour
     public Transform target;
 	public float sightRange;
 	public ParticleSystem chargeUp;
+	public bool standing;
 
 	private Quaternion startingRot;
     private LineRenderer line;
@@ -36,13 +37,14 @@ public class MageController : MonoBehaviour
         {
 			if(dist < sightRange){
 				lookAt = true;
+				chargeUp.Play ();
 			}
 			if(dist > sightRange){
 				transform.rotation = Quaternion.Slerp(transform.rotation,startingRot,  5 * Time.deltaTime);
 				lookAt = false;
 
 			}
-            if (lookAt)
+			if (lookAt && !standing)
             {
                 Vector3 diff = target.position - transform.position;
 			
@@ -67,7 +69,7 @@ public class MageController : MonoBehaviour
 			if(!isFiring){
 				line.enabled = false;
 				laser.enabled = false;
-				chargeUp.Play ();
+
 			}
         }
     }

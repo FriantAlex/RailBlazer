@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Stopper : MonoBehaviour {
-
+	
 	private GameObject player;
 	private GameObject cameraObj;
 
@@ -17,7 +17,7 @@ public class Stopper : MonoBehaviour {
         if(col.gameObject.tag == "Player")
         {
             Debug.Log("Player Stopped");
-            player.GetComponent<SplineWalker>().enabled = false;
+			GameController.s.Stop ();
 
         }
 
