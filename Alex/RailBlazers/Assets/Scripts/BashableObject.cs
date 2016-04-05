@@ -5,6 +5,10 @@ public class BashableObject : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
+        if(col.gameObject.tag == "Player")
+        {
+            GameController.s.Stop();
+        }
 
 		if (col.gameObject.tag == "Shield" && this.gameObject.tag == "ObjectInPath") 
 		{
@@ -21,7 +25,6 @@ public class BashableObject : MonoBehaviour {
 				Destroy(this.gameObject);
 			}
 		}
-
 
 	}
 }
