@@ -14,12 +14,18 @@ public class TempArcher : MonoBehaviour {
 	public float dist;
 	public float sightRange;
 	public Transform target;
+    
+    //Audio
+    private AudioSource mySource;
+    public AudioClip shotClip;
+    public AudioClip noticeClip;
 
-	private Quaternion startingRot;
+    private Quaternion startingRot;
 	// Use this for initialization
 	void Start () {
 		startingRot = transform.rotation;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        mySource = GetComponent<AudioSource>();
 	}
 
     // Update is called once per frame
@@ -44,14 +50,15 @@ public class TempArcher : MonoBehaviour {
 			{
 				Vector3 diff = target.position - transform.position;				
 				float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;				
-				transform.rotation = Quaternion.Euler(0, 0, rotZ);				
+				transform.rotation = Quaternion.Euler(0, 0, rotZ);
+                	
 			}
             if (isFiring)
             {
                 if (shotTimmer > shotDelay)
                 {
                     FireProjectile();
-                    shotTimmer = 0.0f;
+                    shotTimmer = 0.0f;                  
                 }
             }
             shotTimmer += Time.deltaTime;
@@ -61,6 +68,8 @@ public class TempArcher : MonoBehaviour {
     void FireProjectile()
     {
         var clone = Instantiate(projectilePrefab, shotSpawn.position, transform.rotation) as GameObject;
+        //PlaySound(shotClip);
+        mySource.PlayOneShot(shotClip);
     }
 
     void OnTriggerEnter(Collider col)
@@ -73,5 +82,11 @@ public class TempArcher : MonoBehaviour {
             
         }
 
+    }
+    //Play sound once with arguement clip toPlay
+    void PlaySound(AudioClip toPlay)
+    {
+        mySource.clip = toPlay;
+        mySource.Play();
     }
 }

@@ -82,7 +82,11 @@ public class ControllerInput : MonoBehaviour {
         {
             //Debug.Log("Hit right bumper");
         }
-        
+        if (Input.GetButtonDown("LeftClick"))
+        {
+            Debug.Log("Hit left click");
+        }
+
         #endregion
         #region Sticks
         /*
