@@ -3,14 +3,17 @@ using System.Collections;
 
 public class BashableObject : MonoBehaviour {
 
+	private ControllerInput isBashing;
+
+	void Awake(){
+
+		isBashing = GameObject.FindGameObjectWithTag("MainShield").GetComponent<ControllerInput>();
+	}
+
 	void OnTriggerEnter(Collider col)
 	{
-        if(col.gameObject.tag == "Player")
-        {
-            GameController.s.Stop();
-        }
 
-		if (col.gameObject.tag == "Shield" && this.gameObject.tag == "ObjectInPath") 
+		if (col.gameObject.tag == "Shield" && isBashing.bashing) 
 		{
             Debug.Log("Shield " + col.gameObject.name + " destroyed me");
 			GameController.s.Go ();

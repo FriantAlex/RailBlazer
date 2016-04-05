@@ -35,6 +35,7 @@ public class ControllerInput : MonoBehaviour {
     public float shieldStretchLength; //New
     private float startTime;
     private float journeyLength = .01f;
+	private float startingRotSpeed;
     public float scaleLength = .01f;
     public bool bashing;
     public bool returned;
@@ -51,6 +52,8 @@ public class ControllerInput : MonoBehaviour {
         shieldScaleLocal = transform.GetChild(0).transform.localScale;
         shieldScaleReset = shieldScaleLocal;
         returned = true;
+		startingRotSpeed = rotSpeed;
+
     }
 
     void Update()
@@ -82,10 +85,26 @@ public class ControllerInput : MonoBehaviour {
         {
             //Debug.Log("Hit right bumper");
         }
-        if (Input.GetButtonDown("LeftClick"))
+        if (Input.GetButton("LeftClick"))
         {
             Debug.Log("Hit left click");
-        }
+			rotSpeed = 1;
+		}else{
+			rotSpeed = startingRotSpeed;
+		}
+
+		if (Input.GetButtonDown ("Start")) {
+
+			Debug.Log("Pressed start");
+			if (Time.timeScale == 1) {
+				Time.timeScale = 0;
+			}else{
+				Time.timeScale = 1;
+			}
+
+		}
+			
+
 
         #endregion
         #region Sticks

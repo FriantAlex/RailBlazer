@@ -5,6 +5,8 @@ public class GameController : MonoBehaviour {
 	public static GameController s;
 	public bool isStopped;
 	public GameObject player;
+	public GameObject cameraObj;
+	public bool isPaused;
 
 	void Awake(){
 		if (s == null) {
@@ -14,11 +16,12 @@ public class GameController : MonoBehaviour {
 		}
 
 		player = GameObject.FindGameObjectWithTag ("Player");
+		cameraObj = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -33,9 +36,13 @@ public class GameController : MonoBehaviour {
 
 	public void Go(){
 		player.GetComponent<SplineWalker> ().enabled = true;
+		cameraObj.GetComponent<SplineWalker> ().enabled = true;
 	}
 
 	public void Stop(){
 		player.GetComponent<SplineWalker> ().enabled = false;
+		cameraObj.GetComponent<SplineWalker> ().enabled = false;
 	}
+		
+
 }

@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Ricochet.cs" />
      <Compile Include="Assets\Scripts\SpeedController.cs" />
      <Compile Include="Assets\Scripts\Stopper.cs" />
+     <Compile Include="Assets\Scripts\Target.cs" />
      <Compile Include="Assets\Scripts\TempArcher.cs" />
      <Compile Include="Assets\Scripts\TestCode\Bezier.cs" />
      <Compile Include="Assets\Scripts\TestCode\BezierControlPointMode.cs" />
