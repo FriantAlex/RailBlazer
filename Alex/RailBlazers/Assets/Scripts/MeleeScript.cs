@@ -68,7 +68,7 @@ public class MeleeScript : MonoBehaviour
 
     void Attack()
     {
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
         //Play attack animation       
     }
 

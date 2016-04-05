@@ -48,7 +48,7 @@ public class BouncingLaser : MonoBehaviour
 
 			if (Physics.Raycast(lastLaserPos,laserDir,out hit, dist)&& hit.transform.gameObject.tag ==  reflectTag) {
 
-				Debug.Log ("Boop");
+				//Debug.Log ("Boop");
 				timesReflected++;
 				vertexCounter += 3;
 				line.SetVertexCount (vertexCounter);
@@ -59,7 +59,7 @@ public class BouncingLaser : MonoBehaviour
 				laserDir = Vector3.Reflect(laserDir, hit.normal);
 
 			} else {
-				Debug.Log ("No Boop");
+				//Debug.Log ("No Boop");
 				timesReflected++;
 				vertexCounter++;
 				line.SetVertexCount (vertexCounter);

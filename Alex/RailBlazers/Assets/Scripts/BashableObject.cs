@@ -12,8 +12,10 @@ public class BashableObject : MonoBehaviour {
 
 		if (col.gameObject.tag == "Shield" && this.gameObject.tag == "ObjectInPath") 
 		{
+            Debug.Log("Shield " + col.gameObject.name + " destroyed me");
 			GameController.s.Go ();
-		}
+            Destroy(this.gameObject);
+        }
 
 		Debug.Log("I got hit");
 		if(col.gameObject.tag == "Shield")
