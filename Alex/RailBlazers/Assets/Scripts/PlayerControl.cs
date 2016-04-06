@@ -6,13 +6,7 @@ public class PlayerControl : MonoBehaviour {
 
     public Slider hp;
 
-    void Update()
-    {
-        if (Input.GetKeyDown("escape"))
-        {
-            Application.Quit();
-        }
-    }
+
 
     void OnTriggerEnter(Collider col)
     {
@@ -25,6 +19,10 @@ public class PlayerControl : MonoBehaviour {
         {
             TakeDamage(2);
         }
+
+		if (hp.value == 0) {
+			Regen ();
+		}
     }
 
     public void TakeDamage(int damage)
@@ -32,7 +30,15 @@ public class PlayerControl : MonoBehaviour {
         hp.value -= damage;
         if(hp.value == 0)
         {
-            Debug.Log("Game Over");
+			gameObject.SetActive (false);
         }
     }
+
+	public void Regen(){
+
+		hp.value += Time.deltaTime;
+		if (hp.value == 10) {
+			gameObject.SetActive (true);
+		}
+	}
 }

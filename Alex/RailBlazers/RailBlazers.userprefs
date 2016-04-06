@@ -1,13 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControllerInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerControl.cs">
     <Files>
-      <File FileName="Assets\Scripts\ControllerInput.cs" Line="98" Column="31" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="24" Column="1" />
-      <File FileName="Assets\Scripts\BouncingLaser.cs" Line="72" Column="18" />
-      <File FileName="Assets\Scripts\BashableObject.cs" Line="20" Column="38" />
-      <File FileName="Assets\Scripts\Target.cs" Line="30" Column="16" />
-      <File FileName="Assets\Scripts\Stopper.cs" Line="23" Column="3" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="33" Column="3" />
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\ControllerInput.cs" Line="4" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

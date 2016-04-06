@@ -56,6 +56,8 @@
      <Compile Include="Assets\Scripts\Patrol.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\Ricochet.cs" />
+     <Compile Include="Assets\Scripts\ShieldHP.cs" />
+     <Compile Include="Assets\Scripts\SkillCD.cs" />
      <Compile Include="Assets\Scripts\SpeedController.cs" />
      <Compile Include="Assets\Scripts\Stopper.cs" />
      <Compile Include="Assets\Scripts\Target.cs" />

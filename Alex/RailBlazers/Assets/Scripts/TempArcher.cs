@@ -39,7 +39,7 @@ public class TempArcher : MonoBehaviour {
 				lookAt = true;
 			}
 			if(dist > sightRange){
-				transform.rotation = Quaternion.Slerp(transform.rotation,startingRot,  5 * Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation,startingRot,  2 * Time.deltaTime);
 				lookAt = false;				
 			}
             if(dist < attackRange)
@@ -49,7 +49,7 @@ public class TempArcher : MonoBehaviour {
 			if (lookAt)
 			{
 				Vector3 diff = target.position - transform.position;				
-				float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;				
+				float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;	
 				transform.rotation = Quaternion.Euler(0, 0, rotZ);
                 	
 			}

@@ -18,19 +18,18 @@ public class GameController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		cameraObj = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
-
-	// Use this for initialization
-	void Start () {
-
-	}
+		
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(player != null){
+		if (player != null) {
 			
-		}
+			if (Input.GetKeyDown ("escape")) {
+				Application.Quit ();
+			}
 	
+		}
 	}
 
 
