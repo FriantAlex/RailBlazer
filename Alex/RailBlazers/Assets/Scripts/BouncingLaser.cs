@@ -15,6 +15,7 @@ public class BouncingLaser : MonoBehaviour
 	public bool isHit;
 
 	private int verti =  1;  //laser segment handler leave as is
+    public float offset;
 	private bool isActive;
 	private Vector3 currentRot; //current rotation
 	private Vector3 currentPos; //current position
@@ -37,10 +38,13 @@ public class BouncingLaser : MonoBehaviour
 		bool loopActive = true;
 		Vector3 laserDir = transform.right; // direction of the next laser
 		Vector3 lastLaserPos = transform.position; // orgin of the next laser
+        lastLaserPos.z += offset;
 		RaycastHit hit;
 
 		line.SetVertexCount (1);
-		line.SetPosition (0, transform.position);
+        Vector3 setPos = transform.position;
+        setPos.z += offset;
+		line.SetPosition (0, setPos);
 
 
 		while (loopActive) {
