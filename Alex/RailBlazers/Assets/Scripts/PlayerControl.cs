@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour {
 
-    public int health;
+    public Slider hp;
 
     void Update()
     {
@@ -11,17 +12,6 @@ public class PlayerControl : MonoBehaviour {
         {
             Application.Quit();
         }
-
-        if(health <= 0)
-        {
-            //Debug.Log("Game Over");
-        }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
     }
 
     void OnTriggerEnter(Collider col)
@@ -29,7 +19,20 @@ public class PlayerControl : MonoBehaviour {
         if (col.gameObject.tag == "Bullet")
         {
             Debug.Log("Player was hit");
-            health--;
+            TakeDamage(1);
+        }
+        if (col.gameObject.tag == "Melee")
+        {
+            TakeDamage(2);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        hp.value -= damage;
+        if(hp.value == 0)
+        {
+            Debug.Log("Game Over");
         }
     }
 }

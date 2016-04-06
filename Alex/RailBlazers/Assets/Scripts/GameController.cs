@@ -37,12 +37,15 @@ public class GameController : MonoBehaviour {
 	public void Go(){
 		player.GetComponent<SplineWalker> ().enabled = true;
 		cameraObj.GetComponent<SplineWalker> ().enabled = true;
+        player.GetComponent<AudioSource>().enabled = true;
 	}
 
 	public void Stop(){
 		player.GetComponent<SplineWalker> ().enabled = false;
 		cameraObj.GetComponent<SplineWalker> ().enabled = false;
-	}
-		
+        player.GetComponent<AudioSource>().enabled = false;
+
+    }
+
 
 }

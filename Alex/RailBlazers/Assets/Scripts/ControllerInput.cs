@@ -24,19 +24,27 @@ public class ControllerInput : MonoBehaviour {
         Rotation of stick moves parent object, shield rotates appropriately
         
     */
+    //Precision Vars
     public float rotSpeed;
+    private float startingRotSpeed;
+
+    //Bash Vars
     public float shieldGoDelay;
     public float shieldReturnDelay;
+
     public float shieldGoSpeed;
     public float shieldReturnSpeed;
+
     public float shieldGoStretch;
     public float shieldReturnStretch;
+
     public float shieldDist;
-    public float shieldStretchLength; //New
+    public float shieldStretchLength; 
+
     private float startTime;
     private float journeyLength = .01f;
-	private float startingRotSpeed;
     public float scaleLength = .01f;
+
     public bool bashing;
     public bool returned;
 
@@ -45,15 +53,33 @@ public class ControllerInput : MonoBehaviour {
     Vector3 shieldScaleLocal;
     Vector3 shieldScaleReset;
 
+    //Hide Vars
+    public GameObject innerShield;
+    public GameObject outerShield;
+    public GameObject hideShield;
+    public bool hidden;
+    public bool canHide;
+    public float hiddenCD;
+    public float hideTime;
+
+    //Stops audio when paused
+    private AudioListener sound;
+
     void Awake()
     {
         shieldPosLocal = transform.GetChild(0).transform.localPosition;
         shieldResetLocal = shieldPosLocal;
+
         shieldScaleLocal = transform.GetChild(0).transform.localScale;
         shieldScaleReset = shieldScaleLocal;
+
         returned = true;
 		startingRotSpeed = rotSpeed;
+        //Stop audio when paused
+        sound = GameObject.Find("Main Camera").GetComponent<AudioListener>();
 
+        hideShield.SetActive(false);
+        canHide = true;
     }
 
     void Update()
@@ -83,30 +109,35 @@ public class ControllerInput : MonoBehaviour {
         }
         if (Input.GetButtonDown("RightBump"))
         {
-            //Debug.Log("Hit right bumper");
+            Debug.Log("Right Bump");
+            if(this.gameObject.name == "LeftStickHome")
+                StartCoroutine(Hide());
         }
         if (Input.GetButton("LeftClick"))
         {
             Debug.Log("Hit left click");
 			rotSpeed = 1;
-		}else{
+		}
+        else
+        {
 			rotSpeed = startingRotSpeed;
 		}
 
-		if (Input.GetButtonDown ("Start")) {
-
+		if (Input.GetButtonDown ("Start") && this.gameObject.name == "LeftStickHome")
+        {
 			Debug.Log("Pressed start");
-			if (Time.timeScale == 1) {
+			if (Time.timeScale == 1)
+            {
 				Time.timeScale = 0;
+                sound.enabled = false;
 			}else{
 				Time.timeScale = 1;
+                sound.enabled = true;
 			}
-
 		}
-			
-
 
         #endregion
+
         #region Sticks
         /*
         Controls for left and right stick, based on input and object affiliation
@@ -197,6 +228,33 @@ public class ControllerInput : MonoBehaviour {
             bashing = false;
             yield return new WaitForSeconds(shieldReturnDelay);
             returned = true;
+        }
+    }
+
+    private IEnumerator Hide()
+    {
+        if (canHide)
+        {
+            hidden = true;
+            canHide = false;
+            innerShield.SetActive(false);
+            outerShield.SetActive(false);
+            hideShield.SetActive(true);
+            if(this.gameObject.name == "LeftStickHome")
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            yield return new WaitForSeconds(hideTime);
+            hidden = false;
+            innerShield.SetActive(true);
+            outerShield.SetActive(true);
+            hideShield.SetActive(false);
+            if (this.gameObject.name == "LeftStickHome")
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(hiddenCD);
+            canHide = true;
         }
     }
 }
