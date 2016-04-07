@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EndScene.cs" />
     <Compile Include="Assets\Scripts\BashableObject.cs" />
     <Compile Include="Assets\Scripts\BouncingLaser.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\Scripts\Patrol.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\Ricochet.cs" />
+    <Compile Include="Assets\Scripts\SceneFadeInOut.cs" />
     <Compile Include="Assets\Scripts\ShieldHP.cs" />
     <Compile Include="Assets\Scripts\SkillCD.cs" />
     <Compile Include="Assets\Scripts\SpeedController.cs" />

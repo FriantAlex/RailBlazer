@@ -6,7 +6,7 @@ public class SceneFadeInOut : MonoBehaviour
 	public static  SceneFadeInOut s;
 	public float fadeSpeed = 1.5f;          // Speed that the screen fades to and from black.
 
-
+    private bool sceneEnding = false;
 	private bool sceneStarting = true;      // Whether or not the scene is still fading in.
 
 
@@ -23,6 +23,11 @@ public class SceneFadeInOut : MonoBehaviour
 		if(sceneStarting)
 			// ... call the StartScene function.
 			StartScene();
+
+        if (sceneEnding)
+        {
+            EndScene();
+        }
 	}
 
 
@@ -35,12 +40,15 @@ public class SceneFadeInOut : MonoBehaviour
 
 	void FadeToBlack ()
 	{
+        Debug.Log("work");
 		// Lerp the colour of the texture between itself and black.
 		GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
-	}
+        Debug.Log("works");
+
+    }
 
 
-	public void StartScene ()
+    public void StartScene ()
 	{
 		// Fade the texture to clear.
 		FadeToClear();
@@ -57,9 +65,15 @@ public class SceneFadeInOut : MonoBehaviour
 		}
 	}
 
+    public void SetBool()
+    {
+        sceneEnding = true;
+    }
 
 	public void EndScene ()
 	{
+        GetComponent<GUITexture>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+        Debug.Log("Ending");
 		// Make sure the texture is enabled.
 		GetComponent<GUITexture>().enabled = true;
 
