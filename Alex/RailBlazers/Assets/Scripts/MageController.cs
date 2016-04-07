@@ -21,7 +21,7 @@ public class MageController : MonoBehaviour
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
+       anim = GetComponent<Animator>();
         Debug.Log(anim);
     }
 
@@ -33,7 +33,7 @@ public class MageController : MonoBehaviour
 		target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
 		line = this.gameObject.GetComponent<LineRenderer> ();
 		laser = this.gameObject.GetComponent<BouncingLaser> ();
-        Invoke("PlayDeath", 5f); //Death works, we need to kill this enemy   
+        //Invoke("PlayDeath", 5f); //Death works, we need to kill this enemy   
     }
 
     // Update is called once per frame
@@ -42,6 +42,7 @@ public class MageController : MonoBehaviour
 		dist = Vector3.Distance(target.position,transform.position);
         if (target != null)
         {
+
 			if(dist < sightRange){
 				lookAt = true;
 				chargeUp.Play ();
@@ -94,5 +95,14 @@ public class MageController : MonoBehaviour
             anim.SetBool("isDead", true);
         }
     }
+
+	void PlayIdle(){
+		Debug.Log("Idle running ");
+		if (anim != null)
+		{
+			anim.SetBool("Idle", true);
+		}
+
+	}
 
 }

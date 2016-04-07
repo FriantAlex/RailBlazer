@@ -13,6 +13,7 @@ public class BouncingLaser : MonoBehaviour
 	public string breakable;
 	public int limit; // how many times it can bounce
 	public bool isHit;
+	public Transform shotSpawn;
 
 	private int verti =  1;  //laser segment handler leave as is
     public float offset;
@@ -38,13 +39,13 @@ public class BouncingLaser : MonoBehaviour
 		bool loopActive = true;
 		Vector3 laserDir = transform.right; // direction of the next laser
 		Vector3 lastLaserPos = transform.position; // orgin of the next laser
-        lastLaserPos.z += offset;
+       // lastLaserPos.z += offset;
 		RaycastHit hit;
 
 		line.SetVertexCount (1);
-        Vector3 setPos = transform.position;
-        setPos.z += offset;
-		line.SetPosition (0, setPos);
+       // Vector3 setPos = transform.position;
+       // setPos.z += offset;
+		line.SetPosition (0, shotSpawn.position);
 
 
 		while (loopActive) {
@@ -80,8 +81,10 @@ public class BouncingLaser : MonoBehaviour
                 isHit = false;
             }
 
-			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == enemyTag)
-				Destroy(hit.transform.gameObject);
+			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == enemyTag) {
+
+				hit.transform.SendMessage ("HitByLaser");
+			}
 
 			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == breakable)
 				Destroy(hit.transform.gameObject);

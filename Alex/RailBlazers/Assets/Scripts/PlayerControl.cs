@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour {
         }
 
 		if (hp.value == 0) {
-			Regen ();
+			//Regen ();
 		}
     }
 
@@ -30,15 +30,8 @@ public class PlayerControl : MonoBehaviour {
         hp.value -= damage;
         if(hp.value == 0)
         {
-			gameObject.SetActive (false);
+			Debug.Log ("Game Over");
         }
     }
-
-	public void Regen(){
-
-		hp.value += Time.deltaTime;
-		if (hp.value == 10) {
-			gameObject.SetActive (true);
-		}
-	}
+		
 }

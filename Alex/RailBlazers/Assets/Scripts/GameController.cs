@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour {
 	public GameObject player;
 	public GameObject cameraObj;
 	public bool isPaused;
+	public int score;
+	public GUIText scoreText;
 
 	void Awake(){
 		if (s == null) {
@@ -19,7 +21,13 @@ public class GameController : MonoBehaviour {
 		cameraObj = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 		
-	
+	void Start(){
+
+		score = 0;
+		UpdateScore();
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 
@@ -46,5 +54,15 @@ public class GameController : MonoBehaviour {
 
     }
 
+	public void AddScore(int newScoreValue)
+	{
+		score += newScoreValue;
+		UpdateScore();
+	}
+
+	void UpdateScore()
+	{
+		scoreText.text = "Score: " + score;
+	}
 
 }

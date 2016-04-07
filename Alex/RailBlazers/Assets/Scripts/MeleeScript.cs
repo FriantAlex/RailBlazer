@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MeleeScript : MonoBehaviour
 {
+	public Animator anim;
     public int health;
     public int speed;
     public float attackDelay;
@@ -16,12 +17,14 @@ public class MeleeScript : MonoBehaviour
     public float dist;
     public float minDist;
     public Transform target;
+	public GameObject dethAnim;
 
     private Quaternion startingRot;
     private GameObject basher;
 
     void Start()
     {
+		anim = GetComponent<Animator>();
         startingRot = transform.rotation;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         basher = GameObject.Find("LeftStickHome");
@@ -39,10 +42,12 @@ public class MeleeScript : MonoBehaviour
                 if(dist < chargeRange && dist > minDist)
                 {
                     Charging();
+					PlayWalk ();
                 }
                 else if(attackTimer > attackDelay)
                 {
                     Attack();
+					PlayFireAnimation ();
                     attackTimer = 0;
                 }
             }
@@ -81,8 +86,40 @@ public class MeleeScript : MonoBehaviour
             if (col.gameObject.transform.parent.GetComponent<ControllerInput>().bashing)
             {
                 Debug.Log("I got bashed bruh");
+				Instantiate (dethAnim, transform.position, transform.rotation);
                 Destroy(this.gameObject);
             }
         }
     }
+
+
+	void HitByLaser(){
+		Instantiate (dethAnim, transform.position, transform.rotation);
+	}
+
+	void PlayFireAnimation()
+	{
+		if(anim != null)
+		{
+			anim.SetBool("Attacking", true);
+		}
+	}
+
+	void PlayWalk()
+	{
+		Debug.Log("death running ");
+		if (anim != null)
+		{
+			anim.SetBool("Walking", true);
+		}
+	}
+
+	void PlayIdle(){
+		Debug.Log("Idle running ");
+		if (anim != null)
+		{
+			anim.SetBool("Idle", true);
+		}
+
+	}
 }

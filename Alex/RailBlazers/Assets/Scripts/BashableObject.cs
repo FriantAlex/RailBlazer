@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class BashableObject : MonoBehaviour {
+	public int scoreValue;
 
 	private ControllerInput isBashing;
 
@@ -17,11 +18,13 @@ public class BashableObject : MonoBehaviour {
 		{
             Debug.Log("Shield " + col.gameObject.name + " destroyed me");
 			GameController.s.Go ();
+			GameController.s.AddScore(scoreValue);
             Destroy(this.gameObject);
         }
 
         if (col.gameObject.tag == "Shield" && this.gameObject.tag == "Breakable")
         {
+			GameController.s.AddScore(scoreValue);
             Destroy(this.gameObject);
         }
 
@@ -32,6 +35,7 @@ public class BashableObject : MonoBehaviour {
 			if (col.gameObject.transform.parent.GetComponent<ControllerInput>().bashing)
 			{
 				Debug.Log("I got bashed bruh");
+				GameController.s.AddScore(scoreValue);
 				Destroy(this.gameObject);
 			}
 		}
