@@ -47,7 +47,7 @@ public class MeleeScript : MonoBehaviour
                 else if(attackTimer > attackDelay)
                 {
                     Attack();
-					PlayFireAnimation ();
+					//PlayFireAnimation ();
                     attackTimer = 0;
                 }
             }
@@ -73,8 +73,8 @@ public class MeleeScript : MonoBehaviour
 
     void Attack()
     {
-        //Debug.Log("Attack");
-        //Play attack animation       
+        Debug.Log("Attack");
+		PlayFireAnimation();  
     }
 
     void OnTriggerEnter(Collider col)
@@ -95,6 +95,7 @@ public class MeleeScript : MonoBehaviour
 
 	void HitByLaser(){
 		Instantiate (dethAnim, transform.position, transform.rotation);
+		Destroy(this.gameObject);
 	}
 
 	void PlayFireAnimation()
