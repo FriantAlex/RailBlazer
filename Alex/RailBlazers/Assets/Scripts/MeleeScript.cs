@@ -44,7 +44,7 @@ public class MeleeScript : MonoBehaviour
                     Charging();
 					PlayWalk ();
                 }
-                else if(attackTimer > attackDelay)
+                else if(attackTimer > attackDelay && dist <= minDist)
                 {
                     Attack();
 					//PlayFireAnimation ();
@@ -70,7 +70,8 @@ public class MeleeScript : MonoBehaviour
 
     void Charging()
     {
-        transform.position += (target.position - transform.position).normalized * speed * Time.deltaTime;       
+        if(!isAttacking)
+            transform.position += (target.position - transform.position).normalized * speed * Time.deltaTime;       
     }
 
     void Attack()
@@ -89,6 +90,7 @@ public class MeleeScript : MonoBehaviour
             {
                 Debug.Log("I got bashed bruh");
 				Instantiate (dethAnim, transform.position, transform.rotation);
+                GameController.s.AddScore(5);
                 Destroy(this.gameObject);
             }
         }
@@ -103,14 +105,24 @@ public class MeleeScript : MonoBehaviour
 	void PlayFireAnimation()
 	{
 		if(anim != null)
-		{
-			anim.SetBool("Attacking", true);
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Attacking", true);
+            isAttacking = true;
+            Invoke("ResetAttack", .2f);
 		}
 	}
 
+    void ResetAttack()
+    {
+        isAttacking = false;
+        PlayWalk();
+    }
+
 	void PlayWalk()
 	{
-		Debug.Log("walk running ");
+        anim.SetBool("Attacking", false);
+        Debug.Log("walk running ");
 		if (anim != null)
 		{
 			anim.SetBool("Walking", true);

@@ -78,10 +78,14 @@ public class TempArcher : MonoBehaviour {
         {
             Debug.Log("Archer hit by projectile");
             this.enabled = false;
-            target.GetComponent<SplineWalker>().enabled = true;
-            
+            GameController.s.AddScore(10);            
         }
 
+        if(col.gameObject.tag == "Shield")
+        {
+            Debug.Log("Skeleton hit by shield");
+            //do something
+        }
     }
     //Play sound once with arguement clip toPlay
     void PlaySound(AudioClip toPlay)

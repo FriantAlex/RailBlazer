@@ -2,22 +2,19 @@
 using System.Collections;
 
 public class BashableObject : MonoBehaviour {
-	public int scoreValue;
 
+    public int scoreValue;
 	private ControllerInput isBashing;
-
     private AudioSource mySource;
 
-	void Awake(){
-
+	void Awake()
+    {
 		isBashing = GameObject.FindGameObjectWithTag("MainShield").GetComponent<ControllerInput>();
-
         mySource = GetComponent<AudioSource>();
 	}
 
 	void OnTriggerEnter(Collider col)
 	{
-
 		if (col.gameObject.tag == "Shield" && isBashing.bashing && this.gameObject.tag == "ObjectInPath") 
 		{
             Debug.Log("Shield " + col.gameObject.name + " destroyed me");
@@ -38,20 +35,7 @@ public class BashableObject : MonoBehaviour {
             else
             {
                 Destroy(this.gameObject);
-            }
-            
-        }
-
-            Debug.Log("I got hit");
-		if(col.gameObject.tag == "Shield")
-		{
-			Debug.Log("Shield hit me");
-			if (col.gameObject.transform.parent.GetComponent<ControllerInput>().bashing)
-			{
-				Debug.Log("I got bashed bruh");
-				GameController.s.AddScore(scoreValue);
-				Destroy(this.gameObject);
-			}
-		}
+            }        
+        }		
 	}
 }
