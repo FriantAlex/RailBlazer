@@ -26,7 +26,7 @@ public class MeleeScript : MonoBehaviour
     {
 		anim = GetComponent<Animator>();
         startingRot = transform.rotation;
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Eid").GetComponent<Transform>();
         basher = GameObject.Find("LeftStickHome");
     }
 
@@ -77,13 +77,13 @@ public class MeleeScript : MonoBehaviour
 		PlayFireAnimation();  
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
         Debug.Log("I got hit");
         if(col.gameObject.tag == "Shield")
         {
             Debug.Log("Shield hit me");
-            if (col.gameObject.transform.parent.GetComponent<ControllerInput>().bashing)
+            if (!col.gameObject.transform.parent.GetComponent<ControllerInput>().returned)
             {
                 Debug.Log("I got bashed bruh");
 				Instantiate (dethAnim, transform.position, transform.rotation);
@@ -108,7 +108,7 @@ public class MeleeScript : MonoBehaviour
 
 	void PlayWalk()
 	{
-		Debug.Log("death running ");
+		Debug.Log("walk running ");
 		if (anim != null)
 		{
 			anim.SetBool("Walking", true);

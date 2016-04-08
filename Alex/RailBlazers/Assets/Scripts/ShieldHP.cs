@@ -28,7 +28,7 @@ public class ShieldHP : MonoBehaviour {
         {
 			StartCoroutine (Regen ());
             shield.GetComponent<MeshRenderer>().enabled = false;
-            shield.GetComponent<CapsuleCollider>().enabled = false;
+            shield.GetComponent<MeshCollider>().enabled = false;
         }
 
         if (regenTime > 0)
@@ -52,7 +52,7 @@ public class ShieldHP : MonoBehaviour {
     {
         if(other.gameObject.tag == "Bullet" && hp.value > 0)
         {
-            TakeDamage(6);
+            TakeDamage(1);
             regenTime = regenWait;
         }
 	}
@@ -68,7 +68,7 @@ public class ShieldHP : MonoBehaviour {
 		yield return new WaitForSeconds (regenWait * 2);
         hp.value = 10;
         shield.GetComponent<MeshRenderer>().enabled = true;
-        shield.GetComponent<CapsuleCollider>().enabled = true;
+        shield.GetComponent<MeshCollider>().enabled = true;
         regening = false;
     }
 
@@ -76,6 +76,6 @@ public class ShieldHP : MonoBehaviour {
     {
         hp.value = 10;
         shield.GetComponent<MeshRenderer>().enabled = true;
-        shield.GetComponent<CapsuleCollider>().enabled = true;
+        shield.GetComponent<MeshCollider>().enabled = true;
     }
 }
