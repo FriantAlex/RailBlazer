@@ -77,8 +77,7 @@ public class TempArcher : MonoBehaviour {
         if(col.gameObject.tag == "Bullet")
         {
             Debug.Log("Archer hit by projectile");
-            this.enabled = false;
-            GameController.s.AddScore(10);            
+            PlayDeath();    
         }
 
         if(col.gameObject.tag == "Shield")
@@ -92,5 +91,17 @@ public class TempArcher : MonoBehaviour {
     {
         mySource.clip = toPlay;
         mySource.Play();
+    }
+
+    void PlayDeath()
+    {
+        this.enabled = false;
+        GameController.s.AddScore(10);
+    }
+
+    void HitByLaser()
+    {
+
+        PlayDeath();
     }
 }

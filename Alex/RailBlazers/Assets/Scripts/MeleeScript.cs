@@ -6,8 +6,8 @@ public class MeleeScript : MonoBehaviour
 	public Animator anim;
     public int health;
     public int speed;
+    public float attackTimer;
     public float attackDelay;
-    public float attackTimer = 0.0f;
     public float chargeRange;
     public float sightRange;
 
@@ -34,7 +34,7 @@ public class MeleeScript : MonoBehaviour
     void Update()
     {
         dist = Vector3.Distance(target.position, transform.position);
-        if (target != null && !isAttacking)
+        if (target != null)
         {
             if (dist < sightRange)
             {
@@ -43,12 +43,13 @@ public class MeleeScript : MonoBehaviour
                 {
                     Charging();
 					PlayWalk ();
-                }
-                else if(attackTimer > attackDelay && dist <= minDist)
-                {
-                    Attack();
-					//PlayFireAnimation ();
                     attackTimer = 0;
+                }
+                else if(dist <= minDist)
+                {
+                    PlayFireAnimation();
+                    attackTimer += Time.deltaTime;
+					//PlayFireAnimation ();
                 }
             }
             if (dist > sightRange)
@@ -64,7 +65,12 @@ public class MeleeScript : MonoBehaviour
                 //newRot.z = Mathf.Lerp(transform.eulerAngles.z, -rotZ, speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0,0,rotZ);
             }
-            attackTimer += Time.deltaTime;
+        }
+
+        if(attackTimer > attackDelay)
+        {
+            target.transform.parent.GetComponent<PlayerControl>().TakeDamage(1);
+            attackTimer = 0;
         }
     }
 
@@ -74,13 +80,7 @@ public class MeleeScript : MonoBehaviour
             transform.position += (target.position - transform.position).normalized * speed * Time.deltaTime;       
     }
 
-    void Attack()
-    {
-        Debug.Log("Attack");
-		PlayFireAnimation();  
-    }
-
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         Debug.Log("I got hit");
         if(col.gameObject.tag == "Shield")
@@ -94,10 +94,19 @@ public class MeleeScript : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        if(col.gameObject.tag == "Bullet")
+        {
+            Instantiate(dethAnim, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
 
 
-	void HitByLaser(){
+
+
+	void HitByLaser()
+    {
 		Instantiate (dethAnim, transform.position, transform.rotation);
 		Destroy(this.gameObject);
 	}
@@ -109,7 +118,6 @@ public class MeleeScript : MonoBehaviour
             anim.SetBool("Walking", false);
             anim.SetBool("Attacking", true);
             isAttacking = true;
-            Invoke("ResetAttack", .2f);
 		}
 	}
 
@@ -121,20 +129,18 @@ public class MeleeScript : MonoBehaviour
 
 	void PlayWalk()
 	{
-        anim.SetBool("Attacking", false);
-        Debug.Log("walk running ");
 		if (anim != null)
 		{
-			anim.SetBool("Walking", true);
+            isAttacking = false;
+            anim.SetBool("Attacking", false);
+            anim.SetBool("Walking", true);
 		}
 	}
 
 	void PlayIdle(){
-		Debug.Log("Idle running ");
 		if (anim != null)
 		{
 			anim.SetBool("Idle", true);
 		}
-
 	}
 }

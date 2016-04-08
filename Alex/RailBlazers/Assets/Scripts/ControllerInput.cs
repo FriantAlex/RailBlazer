@@ -65,7 +65,7 @@ public class ControllerInput : MonoBehaviour {
     //Stops audio when paused
     private AudioListener sound;
 
-    void Awake()
+    void Start()
     {
         shieldPosLocal = transform.GetChild(0).transform.localPosition;
         shieldResetLocal = shieldPosLocal;

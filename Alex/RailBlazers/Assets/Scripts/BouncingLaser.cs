@@ -86,7 +86,13 @@ public class BouncingLaser : MonoBehaviour
 				hit.transform.SendMessage ("HitByLaser");
 			}
 
-			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == breakable)
+            if (Physics.Raycast(lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == "Breakable")
+            {
+
+                hit.transform.SendMessage("HitByLaser");
+            }
+
+            if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == breakable)
 				Destroy(hit.transform.gameObject);
 
 			if (timesReflected > limit)

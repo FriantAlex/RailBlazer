@@ -129,4 +129,10 @@ public class MageController : MonoBehaviour
             }
         }
     }
+
+    void HitByLaser()
+    {
+
+        PlayDeath();
+    }
 }

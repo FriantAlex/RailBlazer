@@ -15,23 +15,14 @@ public class PlayerControl : MonoBehaviour {
             Debug.Log("Player was hit");
             TakeDamage(1);
         }
-        if (col.gameObject.tag == "Melee")
-        {
-            TakeDamage(2);
-        }
-
-		if (hp.value == 0) {
-			//Regen ();
-		}
     }
 
     public void TakeDamage(int damage)
     {
         hp.value -= damage;
-        if(hp.value == 0)
+        if(hp.value <= 0)
         {
 			Debug.Log ("Game Over");
         }
-    }
-		
+    }		
 }
