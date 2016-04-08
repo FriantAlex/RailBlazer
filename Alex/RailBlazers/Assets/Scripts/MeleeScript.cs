@@ -60,7 +60,9 @@ public class MeleeScript : MonoBehaviour
             {
                 Vector3 diff = target.position - transform.position;
                 float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0, 0, rotZ);
+                //Vector3 newRot = Vector3.zero;
+                //newRot.z = Mathf.Lerp(transform.eulerAngles.z, -rotZ, speed * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(0,0,rotZ);
             }
             attackTimer += Time.deltaTime;
         }

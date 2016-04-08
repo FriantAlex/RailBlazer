@@ -17,12 +17,15 @@ public class MageController : MonoBehaviour
 	private Quaternion startingRot;
     private LineRenderer line;
 	private BouncingLaser laser;
+
+    private AudioSource mySource;
+    private bool sourcePlayed;
     // Use this for initialization
 
     void Awake()
     {
        anim = GetComponent<Animator>();
-        Debug.Log(anim);
+       mySource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -33,17 +36,17 @@ public class MageController : MonoBehaviour
 		target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
 		line = this.gameObject.GetComponent<LineRenderer> ();
 		laser = this.gameObject.GetComponent<BouncingLaser> ();
-        //Invoke("PlayDeath", 5f); //Death works, we need to kill this enemy   
     }
 
     // Update is called once per frame
     void Update()
     {
-		dist = Vector3.Distance(target.position,transform.position);
+		
         if (target != null)
         {
+            dist = Vector3.Distance(target.position, transform.position);
 
-			if(dist < sightRange){
+            if (dist < sightRange){
 				lookAt = true;
 				chargeUp.Play ();
                 PlayFireAnimation();
@@ -65,11 +68,10 @@ public class MageController : MonoBehaviour
 
             if (isFiring)
             {
-					line.enabled = true;
-					laser.enabled = true;
-					chargeUp.Stop ();
-					chargeUp.Clear ();
-
+				line.enabled = true;
+				laser.enabled = true;
+				chargeUp.Stop ();
+				chargeUp.Clear ();               
             }
 			if(!isFiring)
             {
@@ -84,6 +86,11 @@ public class MageController : MonoBehaviour
         if(anim != null)
         {
             anim.SetBool("Attacking", true);
+            if (!sourcePlayed)
+            {
+                mySource.Play();
+                sourcePlayed = true;
+            }
         }
     }
 
@@ -92,7 +99,12 @@ public class MageController : MonoBehaviour
         Debug.Log("death running ");
         if (anim != null)
         {
+            target = null;
             anim.SetBool("isDead", true);
+            line.enabled = false;
+            laser.enabled = false;
+            chargeUp.Stop();
+            chargeUp.Clear();
         }
     }
 
@@ -102,7 +114,19 @@ public class MageController : MonoBehaviour
 		{
 			anim.SetBool("Idle", true);
 		}
-
 	}
 
+    void OnTriggerStay(Collider col)
+    {
+        Debug.Log("I got hit" + col.gameObject.name);
+        if (col.gameObject.tag == "Shield")
+        {
+            Debug.Log("Shield hit me");
+            if (!col.gameObject.transform.parent.GetComponent<ControllerInput>().returned)
+            {
+                Debug.Log("I got bashed bruh");
+                PlayDeath();
+            }
+        }
+    }
 }

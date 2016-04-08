@@ -6,9 +6,13 @@ public class BashableObject : MonoBehaviour {
 
 	private ControllerInput isBashing;
 
+    private AudioSource mySource;
+
 	void Awake(){
 
 		isBashing = GameObject.FindGameObjectWithTag("MainShield").GetComponent<ControllerInput>();
+
+        mySource = GetComponent<AudioSource>();
 	}
 
 	void OnTriggerEnter(Collider col)
@@ -25,7 +29,17 @@ public class BashableObject : MonoBehaviour {
         if (col.gameObject.tag == "Shield" && this.gameObject.tag == "Breakable")
         {
 			GameController.s.AddScore(scoreValue);
-            Destroy(this.gameObject);
+            if(mySource != null)
+            {
+                mySource.Play();
+                transform.GetChild(2).GetComponent<MeshRenderer>().enabled = false;
+                Destroy(this.gameObject, 1f);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+            
         }
 
             Debug.Log("I got hit");
@@ -39,6 +53,5 @@ public class BashableObject : MonoBehaviour {
 				Destroy(this.gameObject);
 			}
 		}
-
 	}
 }
