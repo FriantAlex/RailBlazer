@@ -7,6 +7,7 @@ public class BashableObject : MonoBehaviour
     public int scoreValue;
     private ControllerInput isBashing;
     private AudioSource mySource;
+	public GameObject dust;
 
     public bool broken;
 
@@ -47,6 +48,7 @@ public class BashableObject : MonoBehaviour
                 mySource.Play();
                 broken = true;
                 transform.GetChild(2).GetComponent<MeshRenderer>().enabled = false;
+				Instantiate (dust, transform.position, transform.rotation);
                 Destroy(this.gameObject, .75f);
             }
         }

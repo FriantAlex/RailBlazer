@@ -105,6 +105,7 @@ public class ControllerInput : MonoBehaviour {
         {
             //Debug.Log("Hit left bumper");
             if(this.gameObject.name == "LeftStickHome")
+				
                 StartCoroutine(ShieldBash());
         }
         if (Input.GetButtonDown("RightBump"))

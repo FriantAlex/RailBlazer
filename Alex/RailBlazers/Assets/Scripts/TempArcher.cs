@@ -14,15 +14,19 @@ public class TempArcher : MonoBehaviour {
 	public float dist;
 	public float sightRange;
 	public Transform target;
+	public Animator anim;
+	public GameObject deathAnim;
     
     //Audio
     private AudioSource mySource;
     public AudioClip shotClip;
     public AudioClip noticeClip;
+	public bool noticed = false;
 
     private Quaternion startingRot;
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator>();
 		startingRot = transform.rotation;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         mySource = GetComponent<AudioSource>();
@@ -48,6 +52,10 @@ public class TempArcher : MonoBehaviour {
             }
 			if (lookAt)
 			{
+				if (!noticed) {
+					noticed = true;
+					mySource.Play ();
+				}
 				Vector3 diff = target.position - transform.position;				
 				float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;	
 				transform.rotation = Quaternion.Euler(0, 0, rotZ);
@@ -58,6 +66,7 @@ public class TempArcher : MonoBehaviour {
                 if (shotTimmer > shotDelay)
                 {
                     FireProjectile();
+					PlayFireAnimation ();
                     shotTimmer = 0.0f;                  
                 }
             }
@@ -83,7 +92,7 @@ public class TempArcher : MonoBehaviour {
         if(col.gameObject.tag == "Shield")
         {
             Debug.Log("Skeleton hit by shield");
-            //do something
+			PlayDeath ();
         }
     }
     //Play sound once with arguement clip toPlay
@@ -95,7 +104,8 @@ public class TempArcher : MonoBehaviour {
 
     void PlayDeath()
     {
-        this.enabled = false;
+		Instantiate (deathAnim, transform.position, transform.rotation);
+		Destroy (this.gameObject);
         GameController.s.AddScore(10);
     }
 
@@ -104,4 +114,19 @@ public class TempArcher : MonoBehaviour {
 
         PlayDeath();
     }
+
+	void PlayIdle(){
+		if (anim != null)
+		{
+			anim.SetBool("Idle", true);
+		}
+	}
+
+	void PlayFireAnimation()
+	{
+		if(anim != null)
+		{
+			anim.SetBool("Attacking", true);
+		}
+	}
 }

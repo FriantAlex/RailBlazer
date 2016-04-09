@@ -1,0 +1,270 @@
+fileFormatVersion: 2
+guid: 375f9e2a1064e3447b3a3cecc29bcdd7
+timeCreated: 1460158163
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Archer
+    100002: //RootNode
+    100004: Belly
+    100006: Body
+    100008: Chest
+    100010: Head
+    100012: Hip
+    100014: joint10
+    100016: joint17
+    100018: joint21
+    100020: LArm
+    100022: LElbow
+    100024: LFoot
+    100026: LHand
+    100028: LKnee
+    100030: LLeg
+    100032: Rangd_UV:group1_Rangd_UV:pasted__group_Rangd_UV:pasted__pasted__pCube6
+    100034: RArm
+    100036: RElbow
+    100038: Rfoot
+    100040: RHand
+    100042: RKnee
+    100044: RLeg
+    400000: Archer
+    400002: //RootNode
+    400004: Belly
+    400006: Body
+    400008: Chest
+    400010: Head
+    400012: Hip
+    400014: joint10
+    400016: joint17
+    400018: joint21
+    400020: LArm
+    400022: LElbow
+    400024: LFoot
+    400026: LHand
+    400028: LKnee
+    400030: LLeg
+    400032: Rangd_UV:group1_Rangd_UV:pasted__group_Rangd_UV:pasted__pasted__pCube6
+    400034: RArm
+    400036: RElbow
+    400038: Rfoot
+    400040: RHand
+    400042: RKnee
+    400044: RLeg
+    4300000: Rangd_UV:group1_Rangd_UV:pasted__group_Rangd_UV:pasted__pasted__pCube6
+    7400000: Idle
+    7400002: Attack
+    9500000: //RootNode
+    13700000: Rangd_UV:group1_Rangd_UV:pasted__group_Rangd_UV:pasted__pasted__pCube6
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Archer
+        weight: 1
+      - path: Archer/Body
+        weight: 1
+      - path: Archer/Body/Chest
+        weight: 1
+      - path: Archer/Body/Chest/Belly
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg/LKnee
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg/LKnee/LFoot
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg/LKnee/LFoot/joint21
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg/RKnee
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg/RKnee/Rfoot
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg/RKnee/Rfoot/joint17
+        weight: 1
+      - path: Archer/Body/Chest/LArm
+        weight: 1
+      - path: Archer/Body/Chest/LArm/LElbow
+        weight: 1
+      - path: Archer/Body/Chest/LArm/LElbow/LHand
+        weight: 1
+      - path: Archer/Body/Chest/RArm
+        weight: 1
+      - path: Archer/Body/Chest/RArm/RElbow
+        weight: 1
+      - path: Archer/Body/Chest/RArm/RElbow/RHand
+        weight: 1
+      - path: Archer/Body/Chest/RArm/RElbow/RHand/joint10
+        weight: 1
+      - path: Archer/Body/Head
+        weight: 1
+      - path: Rangd_UV:group1_Rangd_UV:pasted__group_Rangd_UV:pasted__pasted__pCube6
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 122
+      lastFrame: 160
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Archer
+        weight: 1
+      - path: Archer/Body
+        weight: 1
+      - path: Archer/Body/Chest
+        weight: 1
+      - path: Archer/Body/Chest/Belly
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg/LKnee
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg/LKnee/LFoot
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/LLeg/LKnee/LFoot/joint21
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg/RKnee
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg/RKnee/Rfoot
+        weight: 1
+      - path: Archer/Body/Chest/Belly/Hip/RLeg/RKnee/Rfoot/joint17
+        weight: 1
+      - path: Archer/Body/Chest/LArm
+        weight: 1
+      - path: Archer/Body/Chest/LArm/LElbow
+        weight: 1
+      - path: Archer/Body/Chest/LArm/LElbow/LHand
+        weight: 1
+      - path: Archer/Body/Chest/RArm
+        weight: 1
+      - path: Archer/Body/Chest/RArm/RElbow
+        weight: 1
+      - path: Archer/Body/Chest/RArm/RElbow/RHand
+        weight: 1
+      - path: Archer/Body/Chest/RArm/RElbow/RHand/joint10
+        weight: 1
+      - path: Archer/Body/Head
+        weight: 1
+      - path: Rangd_UV:group1_Rangd_UV:pasted__group_Rangd_UV:pasted__pasted__pCube6
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 8
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
