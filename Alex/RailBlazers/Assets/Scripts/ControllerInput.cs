@@ -57,6 +57,7 @@ public class ControllerInput : MonoBehaviour {
     public GameObject innerShield;
     public GameObject outerShield;
     public GameObject hideShield;
+	public GameObject hideEffect;
     public bool hidden;
     public bool canHide;
     public float hiddenCD;
@@ -79,12 +80,14 @@ public class ControllerInput : MonoBehaviour {
         sound = GameObject.Find("Main Camera").GetComponent<AudioListener>();
 
         hideShield.SetActive(false);
+		hideEffect.SetActive (false);
         canHide = true;
     }
 
     void Update()
     {
         #region buttons
+		/*
         if (Input.GetButtonDown("A"))
         {
             Debug.Log("Button A pressed");
@@ -101,6 +104,7 @@ public class ControllerInput : MonoBehaviour {
         {
             Debug.Log("Button Y pressed");
         }
+        */
         if (Input.GetButtonDown("LeftBump"))
         {
             //Debug.Log("Hit left bumper");
@@ -241,6 +245,7 @@ public class ControllerInput : MonoBehaviour {
             innerShield.SetActive(false);
             outerShield.SetActive(false);
             hideShield.SetActive(true);
+			hideEffect.SetActive(true);
             if(this.gameObject.name == "LeftStickHome")
             {
                 GetComponent<MeshRenderer>().enabled = false;
@@ -250,6 +255,7 @@ public class ControllerInput : MonoBehaviour {
             innerShield.SetActive(true);
             outerShield.SetActive(true);
             hideShield.SetActive(false);
+			hideEffect.SetActive(false);
             if (this.gameObject.name == "LeftStickHome")
             {
                 GetComponent<MeshRenderer>().enabled = true;

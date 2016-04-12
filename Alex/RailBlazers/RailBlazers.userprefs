@@ -1,16 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EndScene.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TempArcher.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="45" Column="33" />
-      <File FileName="Assets\Scripts\BashableObject.cs" Line="51" Column="64" />
-      <File FileName="Assets\Scripts\MeleeScript.cs" Line="33" Column="39" />
-      <File FileName="Assets\Scripts\SceneFadeInOut.cs" Line="86" Column="50" />
-      <File FileName="Assets\Scripts\TempArcher.cs" Line="95" Column="17" />
-      <File FileName="Assets\Scripts\BouncingLaser.cs" Line="100" Column="5" />
-      <File FileName="Assets\Scripts\MageController.cs" Line="59" Column="27" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="38" Column="5" />
+      <File FileName="Assets\Scripts\Ricochet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BashableObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MeleeScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneFadeInOut.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TempArcher.cs" Line="57" Column="1" />
+      <File FileName="Assets\Scripts\BouncingLaser.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MageController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\EndScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HideEffect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControllerInput.cs" Line="107" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
