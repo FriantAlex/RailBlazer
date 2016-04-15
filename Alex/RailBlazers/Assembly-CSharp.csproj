@@ -51,7 +51,7 @@
      <Compile Include="Assets\Scripts\BezierCurve.cs" />
      <Compile Include="Assets\Scripts\BezierSpline.cs" />
      <Compile Include="Assets\Scripts\BouncingLaser.cs" />
-     <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\CameraController1.cs" />
      <Compile Include="Assets\Scripts\ControllerInput.cs" />
      <Compile Include="Assets\Scripts\DrawLine.cs" />
      <Compile Include="Assets\Scripts\EndScene.cs" />
