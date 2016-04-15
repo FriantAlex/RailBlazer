@@ -39,12 +39,9 @@ public class BouncingLaser : MonoBehaviour
 		bool loopActive = true;
 		Vector3 laserDir = transform.right; // direction of the next laser
 		Vector3 lastLaserPos = transform.position; // orgin of the next laser
-       // lastLaserPos.z += offset;
 		RaycastHit hit;
 
 		line.SetVertexCount (1);
-       // Vector3 setPos = transform.position;
-       // setPos.z += offset;
 		line.SetPosition (0, shotSpawn.position);
 
 
