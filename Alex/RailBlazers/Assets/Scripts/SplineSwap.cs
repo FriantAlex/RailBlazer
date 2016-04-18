@@ -17,6 +17,7 @@ public class SplineSwap : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 
 			walker.spline = newSpline;
+		walker.mode = SplineWalkerMode.Once;
 		
 	}
 }
