@@ -22,6 +22,9 @@ public class MageController : MonoBehaviour
     private bool sourcePlayed;
     // Use this for initialization
 
+    public AudioClip[] mageAudio;
+    public AudioClip[] deathAudio;
+
     void Awake()
     {
        anim = GetComponent<Animator>();
@@ -88,7 +91,9 @@ public class MageController : MonoBehaviour
             anim.SetBool("Attacking", true);
             if (!sourcePlayed)
             {
-                mySource.Play();
+                //mySource.Play();
+
+                PlayRandomAudio();
                 sourcePlayed = true;
             }
         }
@@ -99,6 +104,7 @@ public class MageController : MonoBehaviour
         Debug.Log("death running ");
         if (anim != null)
         {
+            PlayRandomDeathAudio();
             target = null;
             anim.SetBool("isDead", true);
             line.enabled = false;
@@ -125,6 +131,7 @@ public class MageController : MonoBehaviour
             if (!col.gameObject.transform.parent.GetComponent<ControllerInput>().returned)
             {
                 Debug.Log("I got bashed bruh");
+                
                 PlayDeath();
             }
         }
@@ -134,5 +141,15 @@ public class MageController : MonoBehaviour
     {
 
         PlayDeath();
+    }
+
+    void PlayRandomAudio()
+    {
+        mySource.PlayOneShot(mageAudio[(int)Random.Range(0, mageAudio.Length)], 1f);
+    }
+   
+    void PlayRandomDeathAudio()
+    {
+        mySource.PlayOneShot(deathAudio[(int)Random.Range(0, deathAudio.Length)], 1f);
     }
 }

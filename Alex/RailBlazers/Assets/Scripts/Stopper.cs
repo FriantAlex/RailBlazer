@@ -24,7 +24,7 @@ public class Stopper : MonoBehaviour {
 		if(col.gameObject.tag == "MainCamera")
 		{
 			Debug.Log("Camera Stopped");
-			cameraObj.GetComponent<SplineWalker>().enabled = false;
+			cameraObj.GetComponent<CameraController1>().topDown = true;
 
 		}
     }

@@ -22,12 +22,17 @@ public class MeleeScript : MonoBehaviour
     private Quaternion startingRot;
     private GameObject basher;
 
+    //audio
+    public AudioClip[] meleeAudio;
+    public AudioSource audioSources;
+
     void Start()
     {
 		anim = GetComponent<Animator>();
         startingRot = transform.rotation;
         target = GameObject.FindGameObjectWithTag("Eid").GetComponent<Transform>();
         basher = GameObject.Find("LeftStickHome");
+        audioSources = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,6 +69,8 @@ public class MeleeScript : MonoBehaviour
                 //Vector3 newRot = Vector3.zero;
                 //newRot.z = Mathf.Lerp(transform.eulerAngles.z, -rotZ, speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0,0,rotZ);
+
+                //PlayRandom();
             }
         }
 
@@ -143,4 +150,11 @@ public class MeleeScript : MonoBehaviour
 			anim.SetBool("Idle", true);
 		}
 	}
+
+    void PlayRandom()
+    {
+
+        audioSources.PlayOneShot(meleeAudio[(int)Random.Range(0, meleeAudio.Length)], 1f);
+
+    }
 }

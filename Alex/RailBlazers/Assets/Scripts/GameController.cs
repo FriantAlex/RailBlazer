@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour {
 
 	public void Stop(){
 		player.GetComponent<SplineWalker> ().enabled = false;
-		cameraObj.GetComponent<SplineWalker> ().enabled = false;
+		cameraObj.GetComponent<CameraController1> ().topDown = true;
         player.GetComponent<AudioSource>().enabled = false;
 
     }
