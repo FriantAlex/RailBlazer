@@ -12,6 +12,10 @@ public class SplineWalker : MonoBehaviour {
 	private float progress;
 	private bool goingForward = true;
 
+    void Awake()
+    {
+        //Cursor.visible = false;
+    }
 	private void Update () {
 
 

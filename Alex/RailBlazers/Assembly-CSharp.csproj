@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\MenuMelee.cs" />
+     <Compile Include="Assets\MenuNav.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BashableObject.cs" />
      <Compile Include="Assets\Scripts\Bezier.cs" />

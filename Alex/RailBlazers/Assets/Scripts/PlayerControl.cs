@@ -10,7 +10,13 @@ public class PlayerControl : MonoBehaviour {
 	private AudioSource mySource;
 	private float timer;
 
-	void Awake(){
+    public AudioClip[] signClips;
+    public AudioClip[] damageClips;
+    public AudioClip[] puzzleClips;
+
+
+
+    void Awake(){
 
 		mySource = GetComponent<AudioSource> ();
 
@@ -29,8 +35,21 @@ public class PlayerControl : MonoBehaviour {
         if (col.gameObject.tag == "Bullet")
         {
             Debug.Log("Player was hit");
-			mySource.Play ();
+            mySource.PlayOneShot(damageClips[(int)Random.Range(0, damageClips.Length)], 5f);
             TakeDamage(1);
+
+        }
+
+        if(col.gameObject.tag == "Signs")
+        {
+
+            Debug.Log("Sign Plays");
+            mySource.PlayOneShot(signClips[(int)Random.Range(0, signClips.Length)], 5f);
+
+        }
+        if(col.gameObject.tag == "AudioPuzzle")
+        {
+            mySource.PlayOneShot(puzzleClips[(int)Random.Range(0, puzzleClips.Length)], 5f);
 
         }
     }
@@ -43,6 +62,8 @@ public class PlayerControl : MonoBehaviour {
 			Debug.Log ("Game Over");
 			GameController.s.Stop ();
 			SceneFadeInOut.s.EndScene ();
+
+
         }
     }	
 
@@ -56,4 +77,5 @@ public class PlayerControl : MonoBehaviour {
 		}
 
 	}
+
 }
