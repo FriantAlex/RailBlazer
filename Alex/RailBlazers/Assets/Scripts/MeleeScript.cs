@@ -98,7 +98,7 @@ public class MeleeScript : MonoBehaviour
             {
                 Debug.Log("I got bashed bruh");
 				Instantiate (blood, transform.position, transform.rotation);
-				Instantiate (dethAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.Euler(new Vector3(0, 0, 0)));
+                Instantiate(dethAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - .8f), Quaternion.Euler(new Vector3(0, 90, 0)));
                 GameController.s.AddScore(5);
                 Destroy(this.gameObject);
             }
@@ -107,7 +107,7 @@ public class MeleeScript : MonoBehaviour
         if(col.gameObject.tag == "Bullet")
         {
 			Instantiate (blood, transform.position, transform.rotation);
-            Instantiate(dethAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.Euler(new Vector3(0, 90, 0)));
+            Instantiate(dethAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - .8f), Quaternion.Euler(new Vector3(0, 90, 0)));
             Destroy(this.gameObject);
         }
     }
@@ -118,8 +118,8 @@ public class MeleeScript : MonoBehaviour
 	void HitByLaser()
     {
 		Instantiate (blood, transform.position, transform.rotation);
-		Instantiate (dethAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.Euler(new Vector3(0, 0, 0)));
-		Destroy(this.gameObject);
+        Instantiate(dethAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - .8f), Quaternion.Euler(new Vector3(0, 90, 0)));
+        Destroy(this.gameObject);
 	}
 
 	void PlayFireAnimation()

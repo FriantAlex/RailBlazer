@@ -48,7 +48,7 @@ public class BouncingLaser : MonoBehaviour
 		while (loopActive) {
 			 
 
-			if (Physics.Raycast(lastLaserPos,laserDir,out hit, dist)&& hit.transform.gameObject.tag ==  reflectTag) {
+			if (Physics.Raycast(lastLaserPos,laserDir,out hit, dist) && hit.transform.gameObject.tag ==  reflectTag) {
 
 				//Debug.Log ("Boop");
 				timesReflected++;

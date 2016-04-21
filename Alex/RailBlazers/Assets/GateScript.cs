@@ -5,6 +5,7 @@ public class GateScript : MonoBehaviour {
 
     public bool puzzleDone = false;
     private Animator anim;
+    public Target puzzle;
 
 	// Use this for initialization
 	void Start () {
@@ -15,9 +16,11 @@ public class GateScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        puzzleDone = puzzle.puzzleDone;
         if(puzzleDone == true)
         {
+            
             anim.SetBool("GateActive", true);
 
         }
