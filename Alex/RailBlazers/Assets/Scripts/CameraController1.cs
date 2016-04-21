@@ -33,9 +33,12 @@ public class CameraController1 : MonoBehaviour {
 		if (topDown) {
 			rotX = Mathf.Lerp (rotX, 360, rotSpeed * Time.deltaTime);
 			currentX = Mathf.Lerp (currentX, 0, rotSpeed * Time.deltaTime);
+			dist = Mathf.Lerp (dist, 30, rotSpeed * Time.deltaTime);
+
 		}else{
 			rotX = Mathf.Lerp (rotX, 300, rotSpeed * Time.deltaTime);
 			currentX = Mathf.Lerp (currentX, 40, rotSpeed * Time.deltaTime);
+			dist = Mathf.Lerp (dist, 15, rotSpeed * Time.deltaTime);
 		}
 
 		Vector3 dir = new Vector3 (0, 0, dist);

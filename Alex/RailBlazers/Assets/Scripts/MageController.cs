@@ -13,6 +13,7 @@ public class MageController : MonoBehaviour
 	public float sightRange;
 	public ParticleSystem chargeUp;
 	public bool standing;
+	public GameObject blood; 
 
 	private Quaternion startingRot;
     private LineRenderer line;
@@ -131,7 +132,7 @@ public class MageController : MonoBehaviour
             if (!col.gameObject.transform.parent.GetComponent<ControllerInput>().returned)
             {
                 Debug.Log("I got bashed bruh");
-                
+				Instantiate (blood, transform.position, transform.rotation);
                 PlayDeath();
             }
         }
@@ -139,7 +140,7 @@ public class MageController : MonoBehaviour
 
     void HitByLaser()
     {
-
+		Instantiate (blood, transform.position, transform.rotation);
         PlayDeath();
     }
 

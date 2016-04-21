@@ -78,7 +78,7 @@ public class BouncingLaser : MonoBehaviour
                 isHit = false;
             }
 
-			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == enemyTag) {
+			if (Physics.Raycast (lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == "Enemy") {
 
 				hit.transform.SendMessage ("HitByLaser");
 			}

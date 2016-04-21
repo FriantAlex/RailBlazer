@@ -16,6 +16,7 @@ public class TempArcher : MonoBehaviour {
 	public Transform target;
 	public Animator anim;
 	public GameObject deathAnim;
+	public GameObject blood;
     
     //Audio
     private AudioSource mySource;
@@ -98,12 +99,14 @@ public class TempArcher : MonoBehaviour {
         if(col.gameObject.tag == "Bullet")
         {
             Debug.Log("Archer hit by projectile");
+			Instantiate (blood, transform.position, transform.rotation);
             PlayDeath();    
         }
 
         if(col.gameObject.tag == "Shield")
         {
             Debug.Log("Skeleton hit by shield");
+			Instantiate (blood, transform.position, transform.rotation);
 			PlayDeath ();
         }
     }
@@ -123,7 +126,7 @@ public class TempArcher : MonoBehaviour {
 
     void HitByLaser()
     {
-
+		Instantiate (blood, transform.position, transform.rotation);
         PlayDeath();
     }
 

@@ -10,6 +10,7 @@ public class MeleeScript : MonoBehaviour
     public float attackDelay;
     public float chargeRange;
     public float sightRange;
+	public GameObject blood;
 
     public bool lookAt;
     public bool isAttacking;
@@ -96,6 +97,7 @@ public class MeleeScript : MonoBehaviour
             if (!col.gameObject.transform.parent.GetComponent<ControllerInput>().returned)
             {
                 Debug.Log("I got bashed bruh");
+				Instantiate (blood, transform.position, transform.rotation);
 				Instantiate (dethAnim, transform.position, transform.rotation);
                 GameController.s.AddScore(5);
                 Destroy(this.gameObject);
@@ -104,6 +106,7 @@ public class MeleeScript : MonoBehaviour
 
         if(col.gameObject.tag == "Bullet")
         {
+			Instantiate (blood, transform.position, transform.rotation);
             Instantiate(dethAnim, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
@@ -114,6 +117,7 @@ public class MeleeScript : MonoBehaviour
 
 	void HitByLaser()
     {
+		Instantiate (blood, transform.position, transform.rotation);
 		Instantiate (dethAnim, transform.position, transform.rotation);
 		Destroy(this.gameObject);
 	}
