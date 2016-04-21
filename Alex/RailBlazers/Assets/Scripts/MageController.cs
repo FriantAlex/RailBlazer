@@ -112,6 +112,7 @@ public class MageController : MonoBehaviour
             laser.enabled = false;
             chargeUp.Stop();
             chargeUp.Clear();
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         }
     }
 

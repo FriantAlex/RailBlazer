@@ -84,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GateScript.cs" />
     <Compile Include="Assets\MenuMelee.cs" />
     <Compile Include="Assets\MenuNav.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />

@@ -118,7 +118,7 @@ public class MeleeScript : MonoBehaviour
 	void HitByLaser()
     {
 		Instantiate (blood, transform.position, transform.rotation);
-		Instantiate (dethAnim, transform.position, transform.rotation);
+		Instantiate (dethAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), transform.rotation);
 		Destroy(this.gameObject);
 	}
 
