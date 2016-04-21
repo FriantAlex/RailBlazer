@@ -20,7 +20,7 @@ public class TempArcher : MonoBehaviour {
     //Audio
     private AudioSource mySource;
     public AudioClip shotClip;
-    public AudioClip noticeClip;
+    public AudioClip[] noticeClip;
 	public bool noticed = false;
 
     private Quaternion startingRot;
@@ -43,19 +43,27 @@ public class TempArcher : MonoBehaviour {
 				lookAt = true;
 			}
 			if(dist > sightRange){
-				transform.rotation = Quaternion.Slerp(transform.rotation,startingRot,  2 * Time.deltaTime);
-				lookAt = false;				
+                //transform.rotation = Quaternion.Slerp(transform.rotation,startingRot,  2 * Time.deltaTime);
+                Vector3 diff = target.position - transform.position;
+                float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, rotZ);
+                lookAt = false;				
 			}
             if(dist < attackRange)
             {
                 isFiring = true;
             }
+            if(dist  > attackRange)
+            {
+                isFiring = false;
+                
+            }
 			if (lookAt)
 			{
 				if (!noticed) {
 					noticed = true;
-					mySource.Play ();
-				}
+                    mySource.PlayOneShot(noticeClip[(int)Random.Range(0, noticeClip.Length)], 1f);
+                }
 				Vector3 diff = target.position - transform.position;				
 				float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;	
 				transform.rotation = Quaternion.Euler(0, 0, rotZ);
@@ -69,6 +77,10 @@ public class TempArcher : MonoBehaviour {
 					PlayFireAnimation ();
                     shotTimmer = 0.0f;                  
                 }
+            }
+            if (!isFiring)
+            {
+                PlayIdle();
             }
             shotTimmer += Time.deltaTime;
         }
@@ -104,7 +116,7 @@ public class TempArcher : MonoBehaviour {
 
     void PlayDeath()
     {
-		Instantiate (deathAnim, transform.position, transform.rotation);
+		Instantiate (deathAnim, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.Euler(new Vector3(90,0,0)));
 		Destroy (this.gameObject);
         GameController.s.AddScore(10);
     }
@@ -119,7 +131,8 @@ public class TempArcher : MonoBehaviour {
 		if (anim != null)
 		{
 			anim.SetBool("Idle", true);
-		}
+            anim.SetBool("Attacking", false);
+        }
 	}
 
 	void PlayFireAnimation()
