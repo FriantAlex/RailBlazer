@@ -1,0 +1,337 @@
+fileFormatVersion: 2
+guid: d64a0ab77377d544e88a738debc4000d
+timeCreated: 1459993479
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Belly
+    100002: Body
+    100004: Chest
+    100006: Head
+    100008: joint1
+    100010: joint17
+    100012: joint21
+    100014: LeftArm
+    100016: LElbow
+    100018: LFeet
+    100020: LHand
+    100022: LKnee
+    100024: LLeg
+    100026: //RootNode
+    100028: pCube14
+    100030: RElbow
+    100032: RFeet
+    100034: RHand
+    100036: RightArm
+    100038: RKnee
+    100040: RLeg
+    100042: Waist
+    400000: Belly
+    400002: Body
+    400004: Chest
+    400006: Head
+    400008: joint1
+    400010: joint17
+    400012: joint21
+    400014: LeftArm
+    400016: LElbow
+    400018: LFeet
+    400020: LHand
+    400022: LKnee
+    400024: LLeg
+    400026: //RootNode
+    400028: pCube14
+    400030: RElbow
+    400032: RFeet
+    400034: RHand
+    400036: RightArm
+    400038: RKnee
+    400040: RLeg
+    400042: Waist
+    4300000: pCube14
+    7400000: Walk
+    7400002: Idle
+    7400004: Attack
+    9500000: //RootNode
+    13700000: pCube14
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/Body
+        weight: 1
+      - path: joint1/Body/Chest
+        weight: 1
+      - path: joint1/Body/Chest/Belly
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee/LFeet
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee/LFeet/joint21
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee/RFeet
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee/RFeet/joint17
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm/LElbow
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm/LElbow/LHand
+        weight: 1
+      - path: joint1/Body/Chest/RightArm
+        weight: 1
+      - path: joint1/Body/Chest/RightArm/RElbow
+        weight: 1
+      - path: joint1/Body/Chest/RightArm/RElbow/RHand
+        weight: 1
+      - path: joint1/Body/Head
+        weight: 1
+      - path: pCube14
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 150
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/Body
+        weight: 1
+      - path: joint1/Body/Chest
+        weight: 1
+      - path: joint1/Body/Chest/Belly
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee/LFeet
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee/LFeet/joint21
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee/RFeet
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee/RFeet/joint17
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm/LElbow
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm/LElbow/LHand
+        weight: 1
+      - path: joint1/Body/Chest/RightArm
+        weight: 1
+      - path: joint1/Body/Chest/RightArm/RElbow
+        weight: 1
+      - path: joint1/Body/Chest/RightArm/RElbow/RHand
+        weight: 1
+      - path: joint1/Body/Head
+        weight: 1
+      - path: pCube14
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/Body
+        weight: 1
+      - path: joint1/Body/Chest
+        weight: 1
+      - path: joint1/Body/Chest/Belly
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee/LFeet
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/LLeg/LKnee/LFeet/joint21
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee/RFeet
+        weight: 1
+      - path: joint1/Body/Chest/Belly/Waist/RLeg/RKnee/RFeet/joint17
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm/LElbow
+        weight: 1
+      - path: joint1/Body/Chest/LeftArm/LElbow/LHand
+        weight: 1
+      - path: joint1/Body/Chest/RightArm
+        weight: 1
+      - path: joint1/Body/Chest/RightArm/RElbow
+        weight: 1
+      - path: joint1/Body/Chest/RightArm/RElbow/RHand
+        weight: 1
+      - path: joint1/Body/Head
+        weight: 1
+      - path: pCube14
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 8
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
