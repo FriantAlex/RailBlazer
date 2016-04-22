@@ -33,12 +33,5 @@ public class SpeedController : MonoBehaviour {
 			player.GetComponent<SplineWalker>().duration = duration;
 
 			}
-
-		if(col.gameObject.tag == "MainCamera")
-		{
-			Debug.Log("Camera speed adjusted");
-			cameraObj.GetComponent<SplineWalker>().duration = duration - offSet;
-
-		}
 		}
 	}
