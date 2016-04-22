@@ -14,6 +14,7 @@ public class BouncingLaser : MonoBehaviour
 	public int limit; // how many times it can bounce
 	public bool isHit;
 	public Transform shotSpawn;
+	public GameObject burn;
 
 	private int verti =  1;  //laser segment handler leave as is
     public float offset;
@@ -93,6 +94,12 @@ public class BouncingLaser : MonoBehaviour
 			{
 
 				hit.transform.SendMessage("HitByLaser");
+			}
+
+			if (Physics.Raycast(lastLaserPos, laserDir, out hit, dist) && hit.transform.gameObject.tag == "Solid")
+			{
+
+				Instantiate (burn, hit.point + (hit.normal * .0001f), Quaternion.LookRotation (hit.normal));
 			}
 				
 
