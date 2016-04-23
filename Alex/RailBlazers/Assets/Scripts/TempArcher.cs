@@ -103,7 +103,7 @@ public class TempArcher : MonoBehaviour {
             PlayDeath();    
         }
 
-        if(col.gameObject.tag == "Shield")
+        if(col.gameObject.tag == "Shield" || col.gameObject.tag == "MainShield")
         {
             Debug.Log("Skeleton hit by shield");
 			Instantiate (blood, transform.position, transform.rotation);

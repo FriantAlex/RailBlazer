@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
+
 	public static GameController s;
 	public bool isStopped;
 	public GameObject player;
 	public GameObject cameraObj;
+    public GameObject playerRot;
+	public Slider hp;
+
 	public bool isPaused;
 	public int score;
 	public GUIText scoreText;
@@ -36,7 +41,6 @@ public class GameController : MonoBehaviour {
 			if (Input.GetKeyDown ("escape")) {
 				Application.Quit ();
 			}
-	
 		}
 	}
 
@@ -45,18 +49,24 @@ public class GameController : MonoBehaviour {
 		player.GetComponent<SplineWalker> ().enabled = true;
         cameraObj.GetComponent<CameraController1>().topDown = false;
         player.GetComponent<AudioSource>().enabled = true;
+        playerRot.GetComponent<ControllerInput>().startingRotSpeed = 5f;
     }
 
 	public void Stop(){
 		player.GetComponent<SplineWalker> ().enabled = false;
 		cameraObj.GetComponent<CameraController1> ().topDown = true;
         player.GetComponent<AudioSource>().enabled = false;
-
+        playerRot.GetComponent<ControllerInput>().startingRotSpeed = 10f;
     }
 
 	public void AddScore(int newScoreValue)
 	{
 		score += newScoreValue;
+
+		if (score % 10 == 0) {
+			hp.value +=  2;
+		}
+
 		UpdateScore();
 	}
 

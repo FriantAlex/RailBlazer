@@ -61,7 +61,8 @@ public class PlayerControl : MonoBehaviour {
         {
 			Debug.Log ("Game Over");
 			GameController.s.Stop ();
-			SceneFadeInOut.s.EndScene ();
+			SceneFadeInOut.s.SetBool ();
+			Application.LoadLevel(3);
 
 
         }

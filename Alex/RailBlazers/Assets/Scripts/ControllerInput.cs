@@ -26,7 +26,7 @@ public class ControllerInput : MonoBehaviour {
     */
     //Precision Vars
     public float rotSpeed;
-    private float startingRotSpeed;
+    public float startingRotSpeed;
 
     //Bash Vars
     public float shieldGoDelay;

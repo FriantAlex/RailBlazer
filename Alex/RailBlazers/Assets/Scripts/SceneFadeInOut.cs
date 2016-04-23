@@ -12,7 +12,6 @@ public class SceneFadeInOut : MonoBehaviour
 
 	void Awake ()
 	{
-		// Set the texture so that it is the the size of the screen and covers it.
 		GetComponent<GUITexture>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
 	}
 
@@ -31,10 +30,10 @@ public class SceneFadeInOut : MonoBehaviour
 
 	void Update ()
 	{
-		// If the scene is starting...
-		if(sceneStarting)
-			// ... call the StartScene function.
-			StartScene();
+        if (sceneStarting)
+        {
+            StartScene();
+        }
 
         if (sceneEnding)
         {
@@ -94,7 +93,7 @@ public class SceneFadeInOut : MonoBehaviour
 
 		// If the screen is almost black...
 		if(GetComponent<GUITexture>().color.a >= 0.95f)
-			// ... reload the level.
-			Application.LoadLevel(Application.loadedLevel);
+
+			Application.LoadLevel(2);
 	}
 }
