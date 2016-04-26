@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\CameraController1.cs" />
      <Compile Include="Assets\Scripts\ControllerInput.cs" />
      <Compile Include="Assets\Scripts\CrystalLight.cs" />
+     <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\DrawLine.cs" />
      <Compile Include="Assets\Scripts\EndScene.cs" />
      <Compile Include="Assets\Scripts\Fade2.cs" />
